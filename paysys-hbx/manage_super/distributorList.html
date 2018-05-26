@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>渠道商列表</title>
+	<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/global.css" />
+	<style type="text/css">
+		/**
+		 * 省市区
+		 */
+		.layui-input-inline.store-address {
+			width: 1.2rem;
+		}
+	</style>
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header nav-header">
+			<div class="layui-logo nav-logo">
+            	超级管理员管理后台
+            	<i class="iconfont" id="nav_slide_btn">&#xe61c;</i>
+            </div>
+			<ul class="layui-nav layui-layout-right">
+				<li class="layui-nav-item">
+					<a href="#" class="nav-a">
+						<i class="iconfont">&#xe625;</i>
+						管理员
+					</a>
+				</li>
+				<li class="layui-nav-item"><a href="login.html" class="nav-a" id="nav_log_out">退出登录</a></li>
+			</ul>
+		</div>
+
+		<div class="layui-side layui-bg-black" id="left_nav">
+			<div class="layui-side-scroll">
+				<ul class="layui-nav layui-nav-tree"  lay-filter="test">
+					<li class="layui-nav-item">
+						<a class="" href="javascript:;">营业概况</a>
+						<dl class="layui-nav-child">
+							<dd><a href="stateData.html">数据概况</a></dd>
+						</dl>
+						<dl class="layui-nav-child">
+							<dd><a href="data.html">数据统计</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">交易记录</a>
+						<dl class="layui-nav-child">
+							<dd><a href="tradeDetails.html">交易明细</a></dd>
+							<dd><a href="tradeAll.html">交易汇总</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">渠道商管理</a>
+						<dl class="layui-nav-child">
+							<dd><a href="addDistributor.html">添加渠道商</a></dd>
+							<dd class="layui-this"><a href="distributorList.html">渠道商列表</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">商户管理</a>
+						<dl class="layui-nav-child">
+							<dd><a href="merchantList.html">商户列表</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">财务审核</a>
+						<dl class="layui-nav-child">
+							<dd><a href="settlementCheck.html">分润审核</a></dd>
+							<dd><a href="settlementDetails.html">提现记录</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">商户审核</a>
+						<dl class="layui-nav-child">
+							<dd><a href="fileCheck.html">进件资料审核</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">权限管理</a>
+						<dl class="layui-nav-child">
+							<dd><a href="roleAllot.html">角色分配</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="layui-body" id="content_body">
+			<!-- 面包屑 -->
+			<span class="layui-breadcrumb head-breadcrumb">
+				<i class="iconfont">&#xe61a;</i>
+				<a href="stateData.html">首页</a>
+				<a href="addDistributor.html">渠道商管理</a>
+				<a><cite>渠道商列表</cite></a>
+			</span>
+			<!-- 内容主体区域 -->
+			<div style="padding: 15px;">
+				<!-- 查询部分 -->
+				<form class="layui-form" action="" method="">
+					<div class="layui-form-item">
+						<!-- 选择时间范围 -->
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" placeholder="选择时间范围" autocomplete="off" id="start_time" name="">
+						</div>
+
+						<!-- 渠道商名称 -->
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" placeholder="渠道商名称" autocomplete="off" name="">
+						</div>
+
+						<!-- 渠道商号 -->
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" placeholder="渠道商号" autocomplete="off" name="">
+						</div>
+
+						<!-- 是否认证 -->
+						<div class="layui-input-inline">
+							<select name="" lay-verify="">
+								<option value="">是否认证</option>
+								<option value="010">已认证</option>
+								<option value="021">未认证</option>
+							</select>
+						</div>
+
+						<!-- 选择状态 -->
+						<div class="layui-input-inline">
+							<select name="" lay-verify="">
+								<option value="">选择状态</option>
+								<option value="010">ON</option>
+								<option value="021">OFF</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<!-- 省 -->
+						<div class="layui-input-inline store-address">
+							<select name="" lay-verify="" id="province" lay-filter="province">
+								<option value="">省</option>
+							</select>
+						</div>
+
+						<!-- 市 -->
+						<div class="layui-input-inline store-address">
+							<select name="" lay-verify="" id="city" lay-filter="city">
+								<option value="">市</option>
+							</select>
+						</div>
+
+						<!-- 区 -->
+						<div class="layui-input-inline store-address">
+							<select name="city" lay-verify="" id="area" lay-filter="area">
+								<option value="">区</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<button class="layui-btn layui-btn-normal layui-btn-small" layui-submit>
+							<i class="layui-icon">&#xe615;</i> 查询
+						</button>
+						<button class="layui-btn layui-btn-normal layui-btn-small" type="reset">
+							<i class="layui-icon">&#x1002;</i>重置条件
+						</button>
+						<button class="layui-btn layui-btn-normal layui-btn-small">
+							<i class="layui-icon">&#xe601;</i>导出数据
+						</button>
+					</div>
+				</form>
+
+				<div class="trade-message">
+					<div class="layui-inline">渠道商总量：100</div>
+				</div>
+
+				<!-- 数据表格 -->
+				<table class="layui-table" id="store_list_table" ></table>
+			</div>
+		</div>
+	</div>
+
+	<!-- 认证 -->
+	<script type="text/html" id="renzheng">
+		{{#  if(d.renzheng == 0) {  }}
+			未认证
+		{{#  } else if(d.renzheng == 1) {  }}
+			认证中
+		{{#  } else {  }}
+			已认证
+		{{#  }  }}
+	</script>
+
+	<!-- 状态 -->
+	<script type="text/html" id="isOn">
+		{{#  if(d.isOn == 0) {  }}
+			否
+		{{#  } else {  }}
+			是
+		{{#  }  }}
+	</script>
+
+	<!-- 操作 -->
+	<script type="text/html" id="operation">
+		<a href="{{d.operation}}" class="layui-btn layui-btn-normal layui-btn-small">编辑</a>
+	</script>
+
+	<script src="http://mockjs.com/dist/mock.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/nav.js"></script>
+	<script src="../layui/layui.js"></script>
+	<script type="text/javascript" src="../js/province.js"></script>
+	<script type="text/javascript" src="../js/area.js"></script>
+	<script>
+	//JavaScript代码区域
+	layui.use(['element','form','table','laydate'], function(){
+		var table = layui.table,
+			laydate = layui.laydate,
+			form = layui.form;
+
+		loadProvince(form);
+
+		Mock.mock(/\.json/, 'post', {
+			code: 0,
+			msg: "",
+			count: 100,//返回的数据总数
+			'data|20': [{
+				'distributorName': '@ctitle',
+				'distributorNumber': '@ctitle',
+				'storeAddress': '@ctitle',
+				'rate': '0.25',
+				'contactPhone': '15625099474',
+				'setUpTime': '@datetime',
+				'renzheng': 0,
+				'isOn': 0,
+				'operation': 'editDistributor.html'
+			}]
+		});
+
+		table.render({
+			elem: '#store_list_table',
+			height: 'full-300',
+			url: 'test.json',
+			method: 'post',
+			even: true,
+			page: true,
+			limit: 20,
+			cols: [[//表头(字段名，标题名称，列宽)
+				{field: 'distributorName',title: '渠道商名称',width: 120},
+				{field: 'distributorNumber',title: '渠道商号',width: 120},
+				{field: 'storeAddress',title: '地址',width: 260},
+				{field: 'rate',title: '费率(%)',width:100},
+				{field: 'contactPhone',title: '手机号码',width: 150},
+				{field: 'setUpTime',title: '创建时间',width: 150},
+				{field: 'renzheng',title: '认证',width: 100,toolbar: '#renzheng'},
+				{field: 'isOn',title: '状态',width: 80,toolbar: '#isOn'},
+				{field: 'operation',title: '操作',width: 105,toolbar: '#operation'}
+			]]
+		})
+
+		laydate.render({
+			elem: '#start_time',
+			range: true
+		})
+
+	});
+</script>
+</body>
+</html>

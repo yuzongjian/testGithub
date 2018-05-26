@@ -1,0 +1,31 @@
+/*收款信息*/
+#payment {
+    position: relative;
+}
+
+.payment-item {
+    line-height: 30px;
+}
+.payment-item > label {
+    display: inline-block;
+    width: 50px;
+}
+.payment-item-active:after {
+
+}
+/*新增 编辑*/
+#payment_ctrl {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+/*弹窗居中*/
+#payment_add_layer_form > div > .layui-input-inline{
+    width: 200px;
+    margin-left: 100px;
+    text-align: center;
+}
+#payment_add_layer_form .layui-input-inline:first-child {
+    margin-top: 20px;
+}

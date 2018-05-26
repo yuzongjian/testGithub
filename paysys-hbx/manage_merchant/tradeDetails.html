@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>交易明细</title>
+	<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/global.css" />
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header nav-header">
+            <div class="layui-logo nav-logo">
+            	商户管理后台
+            	<i class="iconfont" id="nav_slide_btn">&#xe61c;</i>
+            </div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="merchantInfo.html" class="nav-a">
+                        <i class="iconfont">&#xe625;</i>
+                        商户
+                    </a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="merchantAuthentication.html" class="nav-a">
+                        <i class="iconfont un-approve-icon">&#xe64c;</i>
+                        未认证：请实名认证
+                    </a>
+                </li>
+                <li class="layui-nav-item"><a href="login.html" class="nav-a" id="nav_log_out">退出登录</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black" id="left_nav">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree  lay-filter="">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">营业概况</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="statisticsData.html">数据统计</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">交易记录</a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-this"><a href="tradeDetails.html">交易明细</a></dd>
+                            <dd><a href="tradeAll.html">交易汇总</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">门店管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="addStore.html">添加门店</a></dd>
+                            <dd><a href="storeList.html">门店列表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">商户信息</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="merchantInfo.html">基本信息</a></dd>
+                            <dd><a href="changePassword.html">修改密码</a></dd>
+                            <dd><a href="merchantAuthentication.html">商户认证</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+		<div class="layui-body" id="content_body">
+			<!-- 面包屑 -->
+			<span class="layui-breadcrumb head-breadcrumb">
+				<i class="iconfont">&#xe61a;</i>
+				<a href="statisticsData.html">首页</a>
+				<a href="tradeDetails.html">交易记录</a>
+				<a><cite>交易明细</cite></a>
+			</span>
+			<!-- 内容主体区域 -->
+			<div style="padding: 15px;">
+				<!-- 查询部分 -->
+				<form class="layui-form" action="" method="">
+					<div class="layui-form-item">
+						<!-- 选择时间范围 -->
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" placeholder="选择时间范围" autocomplete="off" id="start_time" name="">
+						</div>
+
+						<!-- 交易单号 -->
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" placeholder="交易单号" autocomplete="off" name="">
+						</div>
+
+						<!-- 选择门店 -->
+						<div class="layui-input-inline store-address">
+							<select name="" lay-verify="" lay-search>
+								<option value="">选择门店</option>
+								<option value="010">大耳朵门店一号</option>
+								<option value="021">大耳朵门店二号</option>
+								<option value="0571">大耳朵门店三号</option>
+							</select>
+						</div>
+
+						<!-- 选择行业 -->
+						<div class="layui-input-inline store-address">
+							<select name="" lay-verify="" lay-search>
+								<option value="">选择行业</option>
+								<option value="010">奶茶店</option>
+								<option value="021">餐饮</option>
+							</select>
+						</div>
+
+						<!-- 支付方式 -->
+						<div class="layui-input-inline store-address">
+							<select name="" lay-verify="">
+								<option value="">支付方式</option>
+								<option value="010">支付宝</option>
+								<option value="021">微信</option>
+							</select>
+						</div>
+
+						<!-- 交易状态 -->
+						<div class="layui-input-inline store-address">
+							<select name="" lay-verify="">
+								<option value="">交易状态</option>
+								<option value="010">交易成功</option>
+								<option value="021">交易失败</option>
+							</select>
+						</div>	
+					</div>
+					<div class="layui-form-item">
+						<button class="layui-btn layui-btn-normal layui-btn-small" layui-submit>
+							<i class="layui-icon">&#xe615;</i> 查询
+						</button>
+						<button class="layui-btn layui-btn-normal layui-btn-small" type="reset">
+							<i class="layui-icon">&#x1002;</i>重置条件
+						</button>
+						<button class="layui-btn layui-btn-normal layui-btn-small">
+							<i class="layui-icon">&#xe601;</i>导出数据
+						</button>
+					</div>
+				</form>
+
+				<!-- 数据表格 -->
+				<table class="layui-table" id="store_list_table" ></table>
+			</div>
+		</div>
+	</div>
+
+	<!-- 交易方式 -->
+	<script type="text/html" id="payWay">
+		{{#  if(d.payWay == '支付宝') {  }}
+			<span class="alipay">支付宝</span>
+		{{#  } else if(d.payWay == '微信') {  }}
+			<span class="wechatpay">微信</span>
+		{{#  }  }}
+	</script>
+
+	<!-- 交易状态 -->
+	<script type="text/html" id="tradeState">
+		{{#  if(d.tradeState == '交易成功') {  }}
+			<span class="trade-success">交易成功</span>
+		{{#  } else if(d.tradeState == '交易失败') {  }}
+			<span class="trade-fail">交易失败</span>
+		{{#  }  }}
+	</script>
+
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/nav.js"></script>
+	<script src="http://mockjs.com/dist/mock.js"></script>
+	<script src="../layui/layui.js"></script>
+	<script>
+		
+	layui.use(['element','form','table','laydate'], function(){
+		var table = layui.table,
+			laydate = layui.laydate;
+		
+		Mock.mock(/\.json/, 'post', {
+			code: 0,
+			msg: "",
+			count: 100,//返回的数据总数
+			'data|20': [{
+				'storeName': '@ctitle',
+				'storeIndustry': '@ctitle',
+				'tradeNumber': '@natural(10000000000,99999999999)',
+				'consumeMoney': '@natural(0,100000)',
+				'payWay': '支付宝',
+				'tradeState': '交易成功',
+				'tradeTime': '@datetime'
+			}]
+		});
+
+		table.render({
+			elem: '#store_list_table',
+			height: 'full-260',
+			url: 'test.json',
+			method: "post",
+			even: true,
+			page: true,
+			limit: 20,//每页数据量
+			cols: [[//表头(字段名，标题名称，列宽)
+				{field: 'storeName',title: '门店',width: 212},
+				{field: 'storeIndustry',title: '行业',width: 150},
+				{field: 'tradeNumber',title: '交易单号',width: 200},
+				{field: 'consumeMoney',title: '消费金额（元）',width: 150,style: 'color:rgb(255,87,34);'},
+				{field: 'payWay',title: '支付方式',width: 140,toolbar: '#payWay'},
+				{field: 'tradeState',title: '交易状态',width: 150,toolbar: '#tradeState'},
+				{field: 'tradeTime',title: '时间',width: 200}
+			]]
+		})
+
+		laydate.render({
+			elem: '#start_time',
+			range: true
+		})
+		
+	});
+	</script>
+</body>
+</html>

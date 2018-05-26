@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>分润审核</title>
+    <link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/global.css" />
+</head>
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header nav-header">
+            <div class="layui-logo nav-logo">
+                超级管理员管理后台
+                <i class="iconfont" id="nav_slide_btn">&#xe61c;</i>
+            </div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="#" class="nav-a">
+                        <i class="iconfont">&#xe625;</i>
+                        渠道商
+                    </a>
+                <li class="layui-nav-item"><a href="login.html" class="nav-a" id="nav_log_out">退出登录</a></li>
+            </ul>
+        </div>
+        <div class="layui-side layui-bg-black" id="left_nav">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                    <li class="layui-nav-item">
+                        <a class="" href="javascript:;">营业概况</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="stateData.html">数据概况</a></dd>
+                        </dl>
+                        <dl class="layui-nav-child">
+                            <dd><a href="data.html">数据统计</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">交易记录</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="tradeDetails.html">交易明细</a></dd>
+                            <dd><a href="tradeAll.html">交易汇总</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">渠道商管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="addDistributor.html">添加渠道商</a></dd>
+                            <dd><a href="distributorList.html">渠道商列表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">商户管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="merchantList.html">商户列表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">财务审核</a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-this"><a href="settlementCheck.html">分润审核</a></dd>
+                            <dd><a href="settlementDetails.html">提现记录</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">商户审核</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="fileCheck.html">进件资料审核</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">权限管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="roleAllot.html">角色分配</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body" id="content_body">
+            <!-- 面包屑 -->
+            <span class="layui-breadcrumb head-breadcrumb">
+                <i class="iconfont">&#xe61a;</i>
+                <a href="stateData.html">首页</a>
+                <a href="settlementCheck.html">财务审核</a>
+                <a><cite>分润审核</cite></a>
+            </span>
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <form class="layui-form" action="" method="get" accept-charset="utf-8">
+                    <div class="layui-form-item">
+                        <!-- 选择时间范围 -->
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" placeholder="选择时间范围" autocomplete="off" id="start_time" name="">
+                        </div>
+
+                        <!-- 分润周期 -->
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" placeholder="分润周期" autocomplete="off" name="">
+                        </div>
+
+                        <!-- 选择渠道商 -->
+                        <div class="layui-input-inline change-select-width">
+                            <select name="" lay-verify="" lay-search>
+                                <option value="">选择渠道商</option>
+                                <option value="渠道商A">渠道商A</option>
+                                <option value="渠道商B">渠道商B</option>
+                                <option value="渠道商C">渠道商C</option>
+                                <option value="无">无</option>
+                            </select>
+                        </div>
+
+                        <!-- 分润状态 -->
+                        <div class="layui-input-inline change-select-width">
+                            <select name="" lay-verify="" lay-search>
+                                <option value="">分润状态</option>
+                                <option value="010">张三丰</option>
+                                <option value="021">大学城烟酒专柜</option>
+                                <option value="0571">大耳朵门店三号</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <button class="layui-btn layui-btn-normal layui-btn-small" layui-submit>
+                            <i class="layui-icon">&#xe615;</i> 查询
+                        </button>
+                        <button class="layui-btn layui-btn-normal layui-btn-small" type="reset">
+                            <i class="layui-icon">&#x1002;</i>重置条件
+                        </button>
+                        <button class="layui-btn layui-btn-normal layui-btn-small">
+                            <i class="layui-icon">&#xe601;</i>导出数据
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="trade-message">
+                    <div class="layui-inline">分润总额：￥0</div>
+                </div>
+
+                <!-- 数据表格 -->
+                <table class="layui-table" id="store_list_table"></table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/html" id="operation">
+        <a class="layui-btn layui-btn-normal layui-btn-small" href="{{d.operation}}">详情</a>
+    </script>
+
+    <script src="http://mockjs.com/dist/mock.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/nav.js"></script>
+    <script src="../layui/layui.js"></script>
+    <script>
+    //JavaScript代码区域
+    layui.use(['element','laydate','table'], function(){
+        var element = layui.element,
+            laydate = layui.laydate,
+            table = layui.table;
+
+        laydate.render({
+            elem: '#start_time',
+            range: true
+        });
+
+        Mock.mock(/\.json/, 'post', {
+            code: 0,
+            msg: "",
+            count: 100,//返回的数据总数
+            'data|1-100': [{
+                'distributor': '@ctitle',
+                'period': '2017-08',
+                'turnover': '@natural(0,1000000)',
+                'rate': '0.25',
+                'fenrun': '@natural(0,1000000)',
+                'fenrunTime': '@datetime',
+                'status': '待渠道商开发票',
+                'operation': 'settlementDetails.html'
+            }]
+        });
+
+        table.render({
+            elem: '#store_list_table',
+            height: 'full-300',
+            url: 'test.json',
+            method: 'post',
+            even: true,
+            page: true,
+            limit: 20,
+            cols: [[//表头(字段名，标题名称，列宽)
+                {field: 'distributor',title: '渠道商',width: 140},
+                {field: 'period',title: '分润周期（月）',width: 160},
+                {field: 'turnover',title: '营业额（元）',width: 160},
+                {field: 'rate',title: '费率(%)',width:120},
+                {field: 'fenrun',title: '分润金额（元）',width: 160,style: 'color: rgb(255,87,34)'},
+                {field: 'fenrunTime',title: '分润时间',width: 200},
+                {field: 'status',title: '状态',width: 160},
+                {field: 'operation',title: '操作',width: 100,toolbar: '#operation'}
+            ]]
+        })
+    });
+
+    
+</script>
+</body>
+</html>

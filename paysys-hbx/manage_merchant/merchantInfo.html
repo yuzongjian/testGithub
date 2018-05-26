@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>基本信息</title>
+    <link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/global.css" />
+</head>
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header nav-header">
+            <div class="layui-logo nav-logo">
+                商户管理后台
+                <i class="iconfont" id="nav_slide_btn">&#xe61c;</i>
+            </div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="merchantInfo.html" class="nav-a">
+                        <i class="iconfont">&#xe625;</i>
+                        商户
+                    </a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="merchantAuthentication.html" class="nav-a">
+                        <i class="iconfont un-approve-icon">&#xe64c;</i>
+                        未认证：请实名认证
+                    </a>
+                </li>
+                <li class="layui-nav-item"><a href="login.html" class="nav-a" id="nav_log_out">退出登录</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black" id="left_nav">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">营业概况</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="statisticsData.html">数据统计</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">交易记录</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="tradeDetails.html">交易明细</a></dd>
+                            <dd><a href="tradeAll.html">交易汇总</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">门店管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="addStore.html">添加门店</a></dd>
+                            <dd><a href="storeList.html">门店列表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">商户信息</a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-this"><a href="merchantInfo.html">基本信息</a></dd>
+                            <dd><a href="changePassword.html">修改密码</a></dd>
+                            <dd><a href="merchantAuthentication.html">商户认证</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body" id="content_body">
+            <!-- 面包屑 -->
+            <span class="layui-breadcrumb head-breadcrumb">
+                <i class="iconfont">&#xe61a;</i>
+                <a href="statisticsData.html">首页</a>
+                <a href="merchantInfo.html">商户信息</a>
+                <a><cite>基本信息</cite></a>
+            </span>
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <fieldset class="layui-elem-field layui-field-title">
+                  <legend>商户基本信息</legend>
+                  <div class="layui-field-box">
+                        <div class="laiyui-row">
+                            <div class="layui-col-md7">
+                                <table class="layui-table" lay-skin="line" lay-size="lg">
+                                    <colgroup>
+                                        <col width="150">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2">公开信息</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="layui-word-aux">名称</td>
+                                            <td>钟嘉华</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="layui-word-aux">商户号</td>
+                                            <td>127461264162</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="layui-word-aux">手机号码</td>
+                                            <td>15521125561</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="layui-word-aux">门店数量</td>
+                                            <td>11</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="layui-word-aux">认证门店数量</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="layui-word-aux">地址</td>
+                                            <td>广州大学城</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="layui-word-aux">费率</td>
+                                            <td>0.25%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                  </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/nav.js"></script>
+    <script src="../layui/layui.js"></script>
+    <script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+</script>
+</body>
+</html>

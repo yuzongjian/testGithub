@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>添加商户</title>
+	<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/global.css" />
+	<style type="text/css">
+		.layui-form-label {
+			width: 1rem;
+		}
+		/**
+		 * 提交按钮
+		 */
+		#submit_btn {
+			margin-left: 0.2rem;
+		}
+		/**
+		 * 省市区三级联动
+		 */
+		.layui-input-inline.store-address {
+			width: 1rem;
+		}
+		.layui-input-block.detail-store-address {
+			width: 3.2rem;
+			margin-left: 1.3rem;
+		}
+	</style>
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header nav-header">
+			<div class="layui-logo nav-logo">
+            	渠道商管理后台
+            	<i class="iconfont" id="nav_slide_btn">&#xe61c;</i>
+            </div>
+			<ul class="layui-nav layui-layout-right">
+				<li class="layui-nav-item">
+					<a href="#" class="nav-a">
+						<i class="iconfont">&#xe625;</i>
+						渠道商
+					</a>
+				</li>
+				<li class="layui-nav-item"><a href="login.html" class="nav-a" id="nav_log_out">退出登录</a></li>
+			</ul>
+		</div>
+
+		<div class="layui-side layui-bg-black" id="left_nav">
+			<div class="layui-side-scroll">
+				<ul class="layui-nav layui-nav-tree"  lay-filter="test">
+					<li class="layui-nav-item layui-nav-itemed">
+						<a class="" href="javascript:;">营业概况</a>
+						<dl class="layui-nav-child">
+							<dd><a href="statisticsData.html">数据概况</a></dd>
+						</dl>
+						<dl class="layui-nav-child">
+							<dd><a href="data.html">数据统计</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">交易记录</a>
+						<dl class="layui-nav-child">
+							<dd><a href="tradeDetails.html">交易明细</a></dd>
+							<dd><a href="tradeAll.html">交易汇总</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">商户管理</a>
+						<dl class="layui-nav-child">
+							<dd class="layui-this"><a href="addMerchant.html">项目简介</a></dd>
+							<dd><a href="merchantList.html">商户列表</a></dd>
+							<dd><a href="lowerMerchant.html">下级渠道商</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">财务管理</a>
+						<dl class="layui-nav-child">
+							<dd><a href="settlementRun.html">分润结算</a></dd>
+							<dd><a href="settlementRecord.html">结算记录</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">渠道信息</a>
+						<dl class="layui-nav-child">
+							<dd><a href="distributorInf.html">基本信息</a></dd>
+							<dd><a href="changePassword.html">修改密码</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="layui-body" id="content_body">
+			<!-- 面包屑 -->
+			<span class="layui-breadcrumb head-breadcrumb">
+				<i class="iconfont">&#xe61a;</i>
+				<a href="statisticsData.html">首页</a>
+				<a href="addMerchant.html">商户管理</a>
+				<a><cite>添加商户</cite></a>
+			</span>
+			<!-- 内容主体区域 -->
+			<div style="padding: 15px;">
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend>项目简介</legend>
+					<div class="layui-field-box">
+						<form class="layui-form" action="" method="">
+				
+<div class="layui-form-item">
+								<label class="layui-form-label">项目名</label>
+								<div class="layui-input-inline">
+									<input type="text" lay-verify="required" placeholder="请输入商户名" autocomplete="off" class="layui-input" name="merchantName">
+								</div>
+							</div>
+							<!-- 商户名 -->
+							<div class="layui-form-item">
+								<label class="layui-form-label">项目摘要</label>
+								<div class="layui-input-inline">
+									<input type="text" lay-verify="required" placeholder="请输入商户名" autocomplete="off" class="layui-input" name="merchantName">
+								</div>
+							</div>
+
+							<!-- 手机号码 -->
+							<div class="layui-form-item">
+								<label class="layui-form-label">项目申报人</label>
+								<div class="layui-input-inline">
+									<input type="text" lay-verify="required|phone" placeholder="请输入手机号码" autocomplete="off" class="layui-input" name="phone">
+								</div>
+								<div class="layui-form-mid layui-word-aux">注：作为该项目重要标识</div>
+							</div>
+
+							<!-- 初始密码 -->
+							<div class="layui-form-item">
+								<label class="layui-form-label">项目关键词1</label>
+								<div class="layui-input-inline">
+									<input type="text" lay-verify="required" placeholder="请输入初始密码" autocomplete="off" class="layui-input" name="password">
+								</div>
+							</div>
+
+							<!-- 再次输入密码 -->
+							<div class="layui-form-item">
+								<label class="layui-form-label">项目关键词2</label>
+								<div class="layui-input-inline">
+									<input type="text" lay-verify="required|password_again" placeholder="请再次输入密码" autocomplete="off" class="layui-input" name="passwordAgain">
+								</div>
+							</div>
+
+							<!-- 费率 -->
+							<div class="layui-form-item">
+								<label class="layui-form-label">项目关键词3</label>
+								<div class="layui-input-inline">
+									<input type="text" lay-verify="required" placeholder="请输入费率" autocomplete="off" class="layui-input" name="rate">
+								</div>
+								<div class="layui-form-mid layui-word-aux"></div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">项目关键词4</label>
+								<div class="layui-input-inline">
+									<input type="text" lay-verify="required" placeholder="请输入费率" autocomplete="off" class="layui-input" name="rate">
+								</div>
+								<div class="layui-form-mid layui-word-aux"></div>
+							</div>
+<div class="layui-form-item">
+								<label class="layui-form-label">项目申报单位</label>
+								<div class="layui-input-inline">
+									<input type="text" lay-verify="required" placeholder="请输入费率" autocomplete="off" class="layui-input" name="rate">
+								</div>
+								<div class="layui-form-mid layui-word-aux"></div>
+							</div>
+							<!-- 地址 -->
+							<div class="layui-form-item">
+								<label class="layui-form-label">项目所在地址</label>
+								<!-- 省 -->
+								<div class="layui-input-inline store-address">
+									<select name="province" lay-filter="province" id="province" lay-verify="required" lay-search>
+										<option value="">省</option>
+									</select>
+								</div>
+
+								<!-- 市 -->
+								<div class="layui-input-inline store-address">
+									<select name="city" lay-filter="city" lay-verify="required" id="city" lay-search>
+										<option value="">市</option>
+									</select>
+								</div>
+
+								<!-- 区 -->
+								<div class="layui-input-inline store-address">
+									<select name="area" lay-filter="area" lay-verify="required" id="area" lay-search>
+										<option value="">区</option>
+									</select>
+								</div>	
+							</div>
+							<div class="layui-form-item">
+								<div class="layui-input-block detail-store-address">
+									<input type="text" required lay-verify="required" placeholder="请输入详细地址" autocomplete="off" class="layui-input" name="address">
+								</div>
+							</div>
+
+							<!-- 营业状态 -->
+							<div class="layui-form-item">
+								<label class="layui-form-label">项目进行状态</label>
+								<div class="layui-input-block">
+									<input type="checkbox" lay-skin="switch" lay-text="ON|OFF" checked name="inOnSale">
+								</div>
+							</div>
+
+							<!-- 添加 -->
+							<div class="layui-input-block">
+								<button class="layui-btn layui-btn-normal" lay-filter="submit-btn" id="submit_btn" lay-submit>修改项目详情</button>
+							</div>
+							
+						</form>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+	<script src="http://mockjs.com/dist/mock.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/nav.js"></script>
+	<script src="../layui/layui.js"></script>
+	<script type="text/javascript" src="../js/area.js"></script>
+	<script type="text/javascript" src="../js/province.js"></script>
+	<script>
+	
+	Mock.mock(/\.json/, 'post', {
+		code: 0,
+		msg: "",
+		count: 1,//返回的数据总数
+		data: {
+			status: 1,//添加成功/失败的返回值
+			merchantNumber: 01547896325//添加成功时 后台需要返回商户号以便填充进弹窗中
+		}
+	});
+
+	layui.use(['element','form','layer'], function(){
+		var form = layui.form,
+		layer = layui.layer;
+		
+		//省市区三级联动
+		loadProvince(form);
+
+		//校验再次输入密码是否与密码一致
+		form.verify({
+			password_again: function(value,item) {
+				var password = $('input[name="password"]').val();
+				if (value !== password) {
+					return '密码不一致';
+				}
+			}
+		});
+
+		//监听提交按钮
+		form.on('submit(submit-btn)',function(data) {
+			//获取当前容器的全部表单字段，名值对形式：{name: value}
+			var form_data = data.field;
+			if (!form_data.switch) {
+				//switch开关为OFF
+				form_data.switch = 0;
+			} else {
+				//switch开关为ON
+				form_data.switch = 1;
+			}
+			//console.log(form_data);
+
+			$.ajax({
+				url:'test.json',
+				type: 'POST',
+				data: form_data,
+				dataType: 'JSON',
+				//cache: false,//不缓存该页面
+				success: function(data) {
+					var mes = '<p>门店名：' + form_data.merchantName + '</p><p>商户号：' + data.data.merchantNumber + '</p><p>登录账号：' + form_data.phone + '</p>' + '<p>登录密码：' + form_data.passwordAgain + '</p>' + '<p>下级渠道商：' + form_data.lowerDistributor + '</p>';
+					if (data.data.status == 1) {
+						layer.alert(mes, {icon: 1,title: '添加成功',shadeClose: true});
+						//添加成功以后清空表单
+						$('form')[0].reset();
+					} else {
+						layer.msg('添加失败 请稍后重试',{
+							icon: 5,
+							time: 3000,//3s后自动关闭
+							shift: 6//抖动效果
+						});
+						return false;
+					}
+				},
+				error: function() {
+					layer.msg('请求失败 请稍后重试',{
+						icon: 5,
+						time: 3000,//3s后自动关闭
+						shift: 6//抖动效果
+					});
+				}
+			});
+			return false;
+		});
+	});
+</script>
+</body>
+</html>

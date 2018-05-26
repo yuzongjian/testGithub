@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>数据概况</title>
+    <link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/global.css" />
+    <link rel="stylesheet" type="text/css" href="css/stateData.css">
+    <script src="js/echarts.js"></script>
+</head>
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header nav-header">
+            <div class="layui-logo nav-logo">
+                超级管理员管理后台
+                <i class="iconfont" id="nav_slide_btn">&#xe61c;</i>
+            </div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="#" class="nav-a">
+                        <i class="iconfont">&#xe625;</i>
+                        管理员
+                    </a>
+                </li>
+                <li class="layui-nav-item"><a href="login.html" class="nav-a" id="nav_log_out">退出登录</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black" id="left_nav">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">营业概况</a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-this"><a href="stateData.html">数据概况</a></dd>
+                        </dl>
+                        <dl class="layui-nav-child">
+                            <dd><a href="data.html">数据统计</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">交易记录</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="tradeDetails.html">交易明细</a></dd>
+                            <dd><a href="tradeAll.html">交易汇总</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">渠道商管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="addDistributor.html">添加渠道商</a></dd>
+                            <dd><a href="distributorList.html">渠道商列表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">商户管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="merchantList.html">商户列表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">财务审核</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="settlementCheck.html">分润审核</a></dd>
+                            <dd><a href="settlementDetails.html">提现记录</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">商户审核</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="fileCheck.html">进件资料审核</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">权限管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="roleAllot.html">角色分配</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body" id="content_body">
+            <!-- 面包屑 -->
+            <span class="layui-breadcrumb head-breadcrumb">
+                <i class="iconfont">&#xe61a;</i>
+                <a href="stateData.html">首页</a>
+                <a href="stateData.html">营业概况</a>
+                <a><cite>数据统计</cite></a>
+            </span>
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <div class="layui-field-box">
+                    <div>
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend>数据概况</legend>
+                            <div class="data-panel">
+                                <p>今日营业总额</p>
+                                <h3><strong>￥10000.00</strong></h3>
+                                <span>营业总额：</span>
+                                <span>￥100000.00</span>
+                            </div>
+                            <div class="data-panel">
+                                <p>今日利润总额</p>
+                                <h3><strong>￥10000.00</strong></h3>
+                                <span>利润总额：</span>
+                                <span>￥100000.00</span>
+                            </div>
+                            <div class="data-panel">
+                                <p>今日商户数量</p>
+                                <h3><strong>￥10000.00</strong></h3>
+                                <span>商户总量：</span>
+                                <span>￥100000.00</span>
+                            </div>
+                            <div class="data-panel">
+                                <p>今日交易总量</p>
+                                <h3><strong>88</strong></h3>
+                                <span>交易总量：</span>
+                                <span>100</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend>七月数据趋势图</legend>
+                            <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM 折线图-->
+                            <div id="broken_line" style="width: 600px;height:400px;">
+                        </fieldset>
+                    </div>
+                    <div>
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend>九月支付比例</legend>
+                            <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM 饼状图-->
+                            <div id="caky" style="width: 600px;height:400px;">
+
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/nav.js"></script>
+    <script src="../layui/layui.js"></script>
+    <script src="http://mockjs.com/dist/mock.js"></script>
+    <script>
+        layui.use('element', function(){
+            var element = layui.element;
+        });
+        $(document).ready(function(){
+            //饼状图
+            var my_caky = echarts.init(document.getElementById('caky'));
+            //折线图
+            var my_broken_line = echarts.init(document.getElementById('broken_line'));
+
+            var mockData =  Mock.mock({
+                'cakyData|5': [{
+                    'value': '@integer(10, 100)',
+                    'name': '@cname()'
+                    }],
+                'broken_lineData|5': [{
+                    'name': '@cname()',
+                    'type': 'line',
+                    'stack': '总量',
+                    'data': [
+                       '@integer(60, 100)',
+                       '@integer(80, 120)',
+                       '@integer(60, 140)',
+                       '@integer(60, 160)',
+                       '@integer(60, 180)',
+                       '@integer(60, 200)',
+                       '@integer(60, 100)'
+                    ]
+                }]
+            });
+            console.log(mockData);
+            my_caky.setOption({
+            series: [
+                 {
+                     name: '支付比例',
+                     type: 'pie',
+                     radius: '55%',
+                     data: mockData.cakyData
+                 }
+             ]
+            });
+
+            //折线图的数据
+            var broke_line_option = {
+                tooltip: {
+                    trigger: 'axis'
+                },
+                //名称定义
+                legend: {
+                    data:mockData.broken_lineData.name
+                },
+                //位置大小定义
+                grid: {
+
+                    left: '0%',
+                    right: '4%',
+                    bottom: '5%',
+                    containLabel: true
+                },
+                //是否允许下载图表
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                //X轴数据
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['01 Jan','01 Mar','01 May','01 Jul','01 Sep','01 Nov','01 Dec']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                //主要数据
+                series: mockData.broken_lineData
+            };
+            my_broken_line.setOption(broke_line_option);
+        });
+
+    </script>
+</body>
+</html>

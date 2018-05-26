@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>门店列表</title>
+	<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/global.css" />
+	<style type="text/css">
+		/**
+		 * 省市区
+		 */
+		.layui-input-inline.store-address {
+			width: 1.2rem;
+		}
+	</style>
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header nav-header">
+            <div class="layui-logo nav-logo">
+            	商户管理后台
+            	<i class="iconfont" id="nav_slide_btn">&#xe61c;</i>
+            </div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="merchantInfo.html" class="nav-a">
+                        <i class="iconfont">&#xe625;</i>
+                        商户
+                    </a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="merchantAuthentication.html" class="nav-a">
+                        <i class="iconfont un-approve-icon">&#xe64c;</i>
+                        未认证：请实名认证
+                    </a>
+                </li>
+                <li class="layui-nav-item"><a href="login.html" class="nav-a" id="nav_log_out">退出登录</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black" id="left_nav">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">营业概况</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="statisticsData.html">数据统计</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">交易记录</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="tradeDetails.html">交易明细</a></dd>
+                            <dd><a href="tradeAll.html">交易汇总</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">门店管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="addStore.html">添加门店</a></dd>
+                            <dd class="layui-this"><a href="storeList.html">门店列表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">商户信息</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="merchantInfo.html">基本信息</a></dd>
+                            <dd><a href="changePassword.html">修改密码</a></dd>
+                            <dd><a href="merchantAuthentication.html">商户认证</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+		<div class="layui-body" id="content_body">
+			<!-- 面包屑 -->
+			<span class="layui-breadcrumb head-breadcrumb">
+				<i class="iconfont">&#xe61a;</i>
+				<a href="statisticsData.html">首页</a>
+				<a href="addStore.html">门店管理</a>
+				<a><cite>门店列表</cite></a>
+			</span>
+			<!-- 内容主体区域 -->
+			<div style="padding: 15px;">
+				<!-- 查询部分 -->
+				<form class="layui-form" action="" method="">
+					<div class="layui-form-item">
+						<!-- 选择时间范围 -->
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" placeholder="选择时间范围" autocomplete="off" id="start_time" name="">
+						</div>
+
+						<!-- 门店名称 -->
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" placeholder="门店名称" autocomplete="off" name="">
+						</div>
+
+						<!-- 联系人 -->
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" placeholder="联系人" autocomplete="off" name="">
+						</div>
+
+						<!-- 省 -->
+						<div class="layui-input-inline store-address">
+							<select name="province" lay-verify="" id="province" lay-filter="province" lay-search>
+								<option value="">省</option>
+							</select>
+						</div>
+
+						<!-- 市 -->
+						<div class="layui-input-inline store-address">
+							<select name="city" lay-verify="" id="city" lay-filter="city" lay-search>
+								<option value="">市</option>
+							</select>
+						</div>
+
+						<!-- 区 -->
+						<div class="layui-input-inline store-address">
+							<select name="area" lay-verify="" id="area" lay-filter="area" lay-search>
+								<option value="">区</option>
+							</select>
+						</div>	
+					</div>
+					<div class="layui-form-item">
+						<button class="layui-btn layui-btn-normal layui-btn-small" layui-submit>
+							<i class="layui-icon">&#xe615;</i> 查询
+						</button>
+						<button class="layui-btn layui-btn-normal layui-btn-small" type="reset">
+							<i class="layui-icon">&#x1002;</i>重置条件
+						</button>
+						<button class="layui-btn layui-btn-normal layui-btn-small">
+							<i class="layui-icon">&#xe601;</i>导出数据
+						</button>
+						<a href="addStore.html" class="layui-btn layui-btn-normal layui-btn-small">
+							<i class="layui-icon">&#xe654;</i>添加门店
+						</a>
+					</div>
+				</form>
+
+				<!-- 数据表格 -->
+				<table class="layui-table" id="store_list_table" ></table>
+			</div>
+		</div>
+	</div>
+
+	<!--收款码-->
+	<script type="text/html" id="bankQRCode">
+		{{#  if(d.bankQRCode[0] == 0){ }}
+		<a href="{{d.bankQRCode[1]}}" class="layui-btn layui-btn-warm layui-btn-small">申请</a>
+		{{#  } else if(d.bankQRCode[0] == 1) { }}
+		<a href="javascript:;" class="layui-btn layui-btn-warm layui-btn-small QRcode-checking">审核中</a>
+		{{#  } else { }}
+		<a href="javascript:;" class="layui-btn layui-btn-normal layui-btn-small">下载</a>
+		{{#  } }}
+	</script>
+
+	<!--操作-->
+	<script type="text/html" id="operation">
+		<a href="{{d.operation}}" class="layui-btn layui-btn-normal layui-btn-small">编辑</a>
+	</script>
+
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/nav.js"></script>
+	<script src="http://mockjs.com/dist/mock.js"></script>
+	<script src="../layui/layui.js"></script>
+	<script type="text/javascript" src="../js/area.js"></script>
+	<script type="text/javascript" src="../js/province.js"></script>
+	<script>
+		var form,
+			$;
+
+		layui.use(['element','form','table','laydate','laytpl'], function(){
+			var table = layui.table,
+				laydate = layui.laydate;
+				form = layui.form;
+				$ = layui.$;
+
+			//省市区三级联动
+			loadProvince(form);
+
+			Mock.mock(/\.json/, 'post', {
+				code: 0,
+				msg: "",
+				count: 100,//返回的数据总数
+				'data|20': [{
+					'storeName': '@ctitle',
+					'storeIndustry': '@ctitle',
+					'storeAddress': '@ctitle',
+					'contactPreson': '@cname',
+					'contactPhone': '15625099474',
+					'setUpTime': '@date',
+					'isOnSale': '是',
+					'bankQRCode': [
+						'@integer(0,2)',
+						'merchantAuthentication.html'
+					],
+					'operation': 'editStore.html'
+				}]
+			});
+
+			table.render({
+				elem: '#store_list_table',
+				height: 'full-260',
+				url: 'test.json',
+				method: 'post',
+				even: true,
+				page: true,
+				limit: 20,//每页数据量
+				cols: [[//表头(字段名，标题名称，列宽)
+					{field: 'storeName',title: '门店',width: 160},
+					{field: 'storeIndustry',title: '行业',width: 100},
+					{field: 'storeAddress',title: '地址',width: 280},
+					{field: 'contactPreson',title: '联系人',width: 80},
+					{field: 'contactPhone',title: '联系方式',width: 140},
+					{field: 'setUpTime',title: '创建时间',width: 140},
+					{field: 'isOnSale',title: '是否营业',width: 90},
+					{field: 'bankQRCode',title: '收款码',width: 100,toolbar:'#bankQRCode'},
+					{field: 'operation',title: '操作',width: 110,toolbar:'#operation'}
+				]]
+			})
+
+			laydate.render({
+				elem: '#start_time',
+				range: true
+			})
+			
+		});
+	</script>
+</body>
+</html>

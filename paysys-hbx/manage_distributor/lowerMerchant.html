@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>下级渠道商</title>
+	<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/global.css" />
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header nav-header">
+			<div class="layui-logo nav-logo">
+            	渠道商管理后台
+            	<i class="iconfont" id="nav_slide_btn">&#xe61c;</i>
+            </div>
+			<ul class="layui-nav layui-layout-right">
+				<li class="layui-nav-item">
+					<a href="#" class="nav-a">
+						<i class="iconfont">&#xe625;</i>
+						渠道商
+					</a>
+				</li>
+				<li class="layui-nav-item"><a href="login.html" class="nav-a" id="nav_log_out">退出登录</a></li>
+			</ul>
+		</div>
+
+		<div class="layui-side layui-bg-black" id="left_nav">
+			<div class="layui-side-scroll">
+				<ul class="layui-nav layui-nav-tree"  lay-filter="test">
+					<li class="layui-nav-item layui-nav-itemed">
+						<a class="" href="javascript:;">营业概况</a>
+						<dl class="layui-nav-child">
+							<dd><a href="statisticsData.html">数据概况</a></dd>
+						</dl>
+						<dl class="layui-nav-child">
+							<dd><a href="data.html">数据统计</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">交易记录</a>
+						<dl class="layui-nav-child">
+							<dd><a href="tradeDetails.html">交易明细</a></dd>
+							<dd><a href="tradeAll.html">交易汇总</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">商户管理</a>
+						<dl class="layui-nav-child">
+							<dd><a href="addMerchant.html">添加商户</a></dd>
+							<dd><a href="merchantList.html">商户列表</a></dd>
+							<dd class="layui-this"><a href="lowerMerchant.html">下级渠道商</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">财务管理</a>
+						<dl class="layui-nav-child">
+							<dd><a href="settlementRun.html">分润结算</a></dd>
+							<dd><a href="settlementRecord.html">结算记录</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">渠道信息</a>
+						<dl class="layui-nav-child">
+							<dd><a href="distributorInf.html">基本信息</a></dd>
+							<dd><a href="changePassword.html">修改密码</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="layui-body" id="content_body">
+			<!-- 面包屑 -->
+			<span class="layui-breadcrumb head-breadcrumb">
+				<i class="iconfont">&#xe61a;</i>
+				<a href="statisticsData.html">首页</a>
+				<a href="addMerchant.html">商户管理</a>
+				<a><cite>下级渠道商</cite></a>
+			</span>
+			<!-- 内容主体区域 -->
+			<div style="padding: 15px;">
+				<!-- 查询部分 -->
+				<form class="layui-form" action="" method="">
+					<div class="layui-form-item">
+						<!-- 选择时间范围 -->
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" placeholder="选择时间范围" autocomplete="off" id="start_time" name="">
+						</div>
+
+						<!-- 渠道商名称 -->
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" placeholder="渠道商名称" autocomplete="off" name="">
+						</div>
+
+						<!-- 选择费率 -->
+						<div class="layui-input-inline change-select-width">
+							<select name="" lay-verify="" lay-search>
+								<option value="">选择费率</option>
+								<option value="010">0.2</option>
+								<option value="021">0.22</option>
+								<option value="051">0.25</option>
+								<option value="0571">0.38</option>
+							</select>
+						</div>
+
+						<!-- 选择状态 -->
+						<div class="layui-input-inline change-select-width">
+							<select name="" lay-verify="">
+								<option value="">选择状态</option>
+								<option value="010">ON</option>
+								<option value="021">OFF</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<button class="layui-btn layui-btn-normal layui-btn-small" layui-submit>
+							<i class="layui-icon">&#xe615;</i> 查询
+						</button>
+						<button class="layui-btn layui-btn-normal layui-btn-small" type="reset">
+							<i class="layui-icon">&#x1002;</i>重置条件
+						</button>
+						<button class="layui-btn layui-btn-normal layui-btn-small">
+							<i class="layui-icon">&#xe601;</i>导出数据
+						</button>
+						<a href="addStore.html" class="layui-btn layui-btn-normal layui-btn-small">
+							<i class="layui-icon">&#xe654;</i>添加渠道商
+						</a>
+					</div>
+				</form>
+
+				<!-- 数据表格 -->
+				<table class="layui-table" id="store_list_table" ></table>
+			</div>
+		</div>
+	</div>
+
+	<!--状态-->
+	<script type="text/html" id="isOn">
+		{{#  if(d.isOn == 0){ }}
+		否
+		{{#  } else { }}
+		是
+		{{#  } }}
+	</script>
+
+	<!-- 操作 -->
+	<script type="text/html" id="operation">
+		<a href="javascript:;" class="layui-btn layui-btn-normal layui-btn-small">编辑</a>
+	</script>
+
+	<script src="http://mockjs.com/dist/mock.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/nav.js"></script>
+	<script src="../layui/layui.js"></script>
+	<script>
+	//JavaScript代码区域
+	layui.use(['element','form','table','laydate'], function(){
+		var table = layui.table,
+			laydate = layui.laydate;
+
+		Mock.mock(/\.json/, 'post', {
+			code: 0,
+			msg: "",
+			count: 100,//返回的数据总数
+			'data|1-100': [{
+				'lower': '@ctitle',
+				'rate': '0.25',
+				'contactPhone': '15622222222',
+				'setUpTime': '@date',
+				'renzheng': 2,
+				'isOn': 1,
+				'operation': '1',
+			}]
+		});
+
+		table.render({
+			elem: '#store_list_table',
+			height: 'full-260',
+			url: 'tets.json',
+			method: 'post',
+			even: true,
+			page: true,
+			limit: 20,
+			cols: [[//表头(字段名，标题名称，列宽)
+				{field: 'lower',title: '下级渠道商名称',width: 200},
+				{field: 'rate',title: '费率(%)',width:200},
+				{field: 'contactPhone',title: '手机号码',width: 240},
+				{field: 'setUpTime',title: '创建时间',width: 240},
+				{field: 'isOn',title: '状态',width: 161},
+				{field: 'operation',title: '操作',width: 161,toolbar: '#operation'}
+			]]
+		})
+
+		laydate.render({
+			elem: '#start_time',
+			range: true
+		})
+	});
+</script>
+</body>
+</html>
